@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-plat
+  labels:
+    app: python-plat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-plat
+  template:
+    metadata:
+      labels:
+        app: python-plat
+    spec:
+      containers:
+        - name: python-plat
+          image: emmexgdc/platform-app:v3
+          ports: 
+          - containerPort: 5000
+      imagePullSecrets:
+        - name: dockerhub-creds
