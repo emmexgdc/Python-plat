@@ -7,10 +7,10 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY ./src /app
 
-RUN addgroup -S app && adduser -S app -G app \
-    && chown -R app:app /app
+RUN addgroup -g 10001 -S app && adduser -u 10001 -S app -G app \
+    && chown -R 10001:10001 /app
 
-USER app
+USER 10001
 
 EXPOSE 5000
 
